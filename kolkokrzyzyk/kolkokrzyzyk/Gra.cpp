@@ -260,28 +260,30 @@ void Gra::play_game(sf::RenderWindow& oknoAplikacji, int maps, int who_start)
         int My = sf::Mouse::getPosition(oknoAplikacji).y;
         oknoAplikacji.clear(sf::Color::White);
         while (oknoAplikacji.pollEvent(reaction))
+           
         {
-            if (maps==3)
-            {
-                if ((Mx > 375 && Mx < 375 + 900+450 ) && (My>420 && My < 420 + 900+450))
+           
+            o.setScale(sprawdz_cordy.scale[maps - 3], sprawdz_cordy.scale[maps - 3]);
+            x.setScale(sprawdz_cordy.scale[maps - 3], sprawdz_cordy.scale[maps - 3]);
+                if ((Mx > sprawdz_cordy.cordx[maps-3][0] && Mx < sprawdz_cordy.cordx[maps - 3][maps]) && (My> sprawdz_cordy.cordy[maps - 3][0] && My < sprawdz_cordy.cordy[maps - 3][maps]))
                 {
-                    if (Mx < sprawdz_cordy.cordx3[essa])
+                    if (Mx < sprawdz_cordy.cordx[maps - 3][essa])
                     {
                         essa--;
                     }
-                    if (My < sprawdz_cordy.cordy3[essa1])
+                    if (My < sprawdz_cordy.cordy[maps - 3][essa1])
                     {
                         essa1--;
                     }
-                    if (Mx > sprawdz_cordy.cordx3[essa])
+                    if (Mx > sprawdz_cordy.cordx[maps - 3][essa])
                     {
                         essa++;
                     }
-                    if (My > sprawdz_cordy.cordy3[essa1])
+                    if (My > sprawdz_cordy.cordy[maps - 3][essa1])
                     {
                         essa1++;
                     }      
-     
+                    cout << essa << " " << essa1 << endl;
                 }
                 
                
@@ -303,21 +305,21 @@ void Gra::play_game(sf::RenderWindow& oknoAplikacji, int maps, int who_start)
 
 
                 oknoAplikacji.draw(board);
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < maps; i++)
                 {
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j < maps; j++)
                     {
                         if (tab_minimax[i][j] == 'o' )
                         {
                             
-                            o.setPosition(sprawdz_cordy.cordx3[i], sprawdz_cordy.cordy3[j]);
+                            o.setPosition(sprawdz_cordy.cordx[maps - 3][i], sprawdz_cordy.cordy[maps - 3][j]);
                            
                             oknoAplikacji.draw(o);
                         }
                         if (tab_minimax[i][j] == 'x')
                         {
 
-                            x.setPosition(sprawdz_cordy.cordx3[i], sprawdz_cordy.cordy3[j]);
+                            x.setPosition(sprawdz_cordy.cordx[maps - 3][i], sprawdz_cordy.cordy[maps - 3][j]);
 
                             oknoAplikacji.draw(x);
                         }
@@ -326,490 +328,6 @@ void Gra::play_game(sf::RenderWindow& oknoAplikacji, int maps, int who_start)
                 }
                 oknoAplikacji.display();
                
-              
-            }
-
-
-
-            if (maps == 4)
-            {
-                o.setScale(0.8, 0.8);
-                x.setScale(0.8, 0.8);
-                if ((Mx > 375 && Mx < 375 + 4 * 325) && (My > 420 && My < 420 + 4 * 315))
-                {
-                    if (Mx < sprawdz_cordy.cordx4[essa])
-                    {
-                        essa--;
-                    }
-                    if (My < sprawdz_cordy.cordy4[essa1])
-                    {
-                        essa1--;
-                    }
-                    if (Mx > sprawdz_cordy.cordx4[essa])
-                    {
-                        essa++;
-                    }
-                    if (My > sprawdz_cordy.cordy4[essa1])
-                    {
-                        essa1++;
-                    }
-
-                }
-
-
-
-                if (turn == true && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'x')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'o';
-                    turn = false;
-
-                }
-
-
-                if (turn == false && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'o')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'x';
-                    turn = true;
-
-                }
-
-
-                oknoAplikacji.draw(board);
-                for (int i = 0; i < 4; i++)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (tab_minimax[i][j] == 'o')
-                        {
-
-                            o.setPosition(sprawdz_cordy.cordx4[i], sprawdz_cordy.cordy4[j]);
-
-                            oknoAplikacji.draw(o);
-                        }
-                        if (tab_minimax[i][j] == 'x')
-                        {
-
-                            x.setPosition(sprawdz_cordy.cordx4[i], sprawdz_cordy.cordy4[j]);
-
-                            oknoAplikacji.draw(x);
-                        }
-
-                    }
-                }
-                oknoAplikacji.display();
-
-
-
-
-
-            }
-            if (maps == 5)
-            {
-                o.setScale(0.6, 0.6);
-                x.setScale(0.6, 0.6);
-                if ((Mx > 375 && Mx < 375 + 5 * 260) && (My > 420 && My < 420 + 5 * 260))
-                {
-                    if (Mx < sprawdz_cordy.cordx5[essa])
-                    {
-                        essa--;
-                    }
-                    if (My < sprawdz_cordy.cordy5[essa1])
-                    {
-                        essa1--;
-                    }
-                    if (Mx > sprawdz_cordy.cordx5[essa])
-                    {
-                        essa++;
-                    }
-                    if (My > sprawdz_cordy.cordy5[essa1])
-                    {
-                        essa1++;
-                    }
-
-                }
-
-
-
-                if (turn == true && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'x')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'o';
-                    turn = false;
-
-                }
-
-
-                if (turn == false && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'o')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'x';
-                    turn = true;
-
-                }
-
-
-                oknoAplikacji.draw(board);
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        if (tab_minimax[i][j] == 'o')
-                        {
-
-                            o.setPosition(sprawdz_cordy.cordx5[i], sprawdz_cordy.cordy5[j]);
-
-                            oknoAplikacji.draw(o);
-                        }
-                        if (tab_minimax[i][j] == 'x')
-                        {
-
-                            x.setPosition(sprawdz_cordy.cordx5[i], sprawdz_cordy.cordy5[j]);
-
-                            oknoAplikacji.draw(x);
-                        }
-
-                    }
-                }
-                oknoAplikacji.display();
-
-
-            }
-            if (maps == 6)
-            {
-                o.setScale(0.5, 0.5);
-                x.setScale(0.5, 0.5);
-                if ((Mx > 365 && Mx < 365 + 6 * 220) && (My > 390 && My < 390 + 6 * 220))
-                {
-                    if (Mx < sprawdz_cordy.cordx6[essa])
-                    {
-                        essa--;
-                    }
-                    if (My < sprawdz_cordy.cordy6[essa1])
-                    {
-                        essa1--;
-                    }
-                    if (Mx > sprawdz_cordy.cordx6[essa])
-                    {
-                        essa++;
-                    }
-                    if (My > sprawdz_cordy.cordy6[essa1])
-                    {
-                        essa1++;
-                    }
-
-                }
-
-
-
-                if (turn == true && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'x')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'o';
-                    turn = false;
-
-                }
-
-
-                if (turn == false && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'o')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'x';
-                    turn = true;
-
-                }
-
-
-                oknoAplikacji.draw(board);
-                for (int i = 0; i < 6; i++)
-                {
-                    for (int j = 0; j < 6; j++)
-                    {
-                        if (tab_minimax[i][j] == 'o')
-                        {
-
-                            o.setPosition(sprawdz_cordy.cordx6[i], sprawdz_cordy.cordy6[j]);
-
-                            oknoAplikacji.draw(o);
-                        }
-                        if (tab_minimax[i][j] == 'x')
-                        {
-
-                            x.setPosition(sprawdz_cordy.cordx6[i], sprawdz_cordy.cordy6[j]);
-
-                            oknoAplikacji.draw(x);
-                        }
-
-                    }
-                }
-                oknoAplikacji.display();
-            }
-            if (maps == 7)
-            {
-                o.setScale(0.4, 0.4);
-                x.setScale(0.4, 0.4);
-                if ((Mx > 380 && Mx < 380 + 7 * 185) && (My > 390 && My < 390 + 7 * 185))
-                {
-                    if (Mx < sprawdz_cordy.cordx7[essa])
-                    {
-                        essa--;
-                    }
-                    if (My < sprawdz_cordy.cordy7[essa1])
-                    {
-                        essa1--;
-                    }
-                    if (Mx > sprawdz_cordy.cordx7[essa])
-                    {
-                        essa++;
-                    }
-                    if (My > sprawdz_cordy.cordy7[essa1])
-                    {
-                        essa1++;
-                    }
-
-                }
-
-
-
-                if (turn == true && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'x')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'o';
-                    turn = false;
-
-                }
-
-
-                if (turn == false && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'o')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'x';
-                    turn = true;
-
-                }
-
-
-                oknoAplikacji.draw(board);
-                for (int i = 0; i < 7; i++)
-                {
-                    for (int j = 0; j < 7; j++)
-                    {
-                        if (tab_minimax[i][j] == 'o')
-                        {
-
-                            o.setPosition(sprawdz_cordy.cordx7[i], sprawdz_cordy.cordy7[j]);
-
-                            oknoAplikacji.draw(o);
-                        }
-                        if (tab_minimax[i][j] == 'x')
-                        {
-
-                            x.setPosition(sprawdz_cordy.cordx7[i], sprawdz_cordy.cordy7[j]);
-
-                            oknoAplikacji.draw(x);
-                        }
-
-                    }
-                }
-                oknoAplikacji.display();
-            }
-            if (maps == 8)
-            {
-                o.setScale(0.4, 0.4);
-                 x.setScale(0.4, 0.4);
-                if ((Mx > 350 && Mx < 350 + 8 * 164) && (My > 420 && My < 420 + 8 * 162))
-                {
-                    if (Mx < sprawdz_cordy.cordx8[essa])
-                    {
-                        essa--;
-                    }
-                    if (My < sprawdz_cordy.cordy8[essa1])
-                    {
-                        essa1--;
-                    }
-                    if (Mx > sprawdz_cordy.cordx8[essa])
-                    {
-                        essa++;
-                    }
-                    if (My > sprawdz_cordy.cordy8[essa1])
-                    {
-                        essa1++;
-                    }
-
-                }
-
-
-
-                if (turn == true && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'x')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'o';
-                    turn = false;
-
-                }
-
-
-                if (turn == false && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'o')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'x';
-                    turn = true;
-
-                }
-
-
-                oknoAplikacji.draw(board);
-                for (int i = 0; i < 8; i++)
-                {
-                    for (int j = 0; j < 8; j++)
-                    {
-                        if (tab_minimax[i][j] == 'o')
-                        {
-
-                            o.setPosition(sprawdz_cordy.cordx8[i], sprawdz_cordy.cordy8[j]);
-
-                            oknoAplikacji.draw(o);
-                        }
-                        if (tab_minimax[i][j] == 'x')
-                        {
-
-                            x.setPosition(sprawdz_cordy.cordx8[i], sprawdz_cordy.cordy8[j]);
-
-                            oknoAplikacji.draw(x);
-                        }
-
-                    }
-                }
-                oknoAplikacji.display();
-            }
-            if (maps == 9)
-            {
-                o.setScale(0.32, 0.32);
-                x.setScale(0.32, 0.32);
-                if ((Mx > 370 && Mx < 370 + 9 * 145) && (My > 380 && My < 380 + 9 * 145))
-                {
-                    if (Mx < sprawdz_cordy.cordx9[essa])
-                    {
-                        essa--;
-                    }
-                    if (My < sprawdz_cordy.cordy9[essa1])
-                    {
-                        essa1--;
-                    }
-                    if (Mx > sprawdz_cordy.cordx9[essa])
-                    {
-                        essa++;
-                    }
-                    if (My > sprawdz_cordy.cordy9[essa1])
-                    {
-                        essa1++;
-                    }
-
-                }
-
-
-
-                if (turn == true && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'x')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'o';
-                    turn = false;
-
-                }
-
-
-                if (turn == false && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'o')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'x';
-                    turn = true;
-
-                }
-
-
-                oknoAplikacji.draw(board);
-                for (int i = 0; i < 9; i++)
-                {
-                    for (int j = 0; j < 9; j++)
-                    {
-                        if (tab_minimax[i][j] == 'o')
-                        {
-
-                            o.setPosition(sprawdz_cordy.cordx9[i], sprawdz_cordy.cordy9[j]);
-
-                            oknoAplikacji.draw(o);
-                        }
-                        if (tab_minimax[i][j] == 'x')
-                        {
-
-                            x.setPosition(sprawdz_cordy.cordx9[i], sprawdz_cordy.cordy9[j]);
-
-                            oknoAplikacji.draw(x);
-                        }
-
-                    }
-                }
-                oknoAplikacji.display();
-            }
-            if (maps == 10)
-            {
-                o.setScale(0.3, 0.3);
-                x.setScale(0.3, 0.3);
-                if ((Mx > 365 && Mx < 365 + 10 * 130) && (My > 375 && My < 375 + 10 * 130))
-                {
-                    if (Mx < sprawdz_cordy.cordx10[essa])
-                    {
-                        essa--;
-                    }
-                    if (My < sprawdz_cordy.cordy10[essa1])
-                    {
-                        essa1--;
-                    }
-                    if (Mx > sprawdz_cordy.cordx10[essa])
-                    {
-                        essa++;
-                    }
-                    if (My > sprawdz_cordy.cordy10[essa1])
-                    {
-                        essa1++;
-                    }
-
-                }
-
-
-
-                if (turn == true && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'x')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'o';
-                    turn = false;
-
-                }
-
-
-                if (turn == false && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'o')
-                {
-                    tab_minimax[essa - 1][essa1 - 1] = 'x';
-                    turn = true;
-
-                }
-
-
-                oknoAplikacji.draw(board);
-                for (int i = 0; i < 10; i++)
-                {
-                    for (int j = 0; j < 10; j++)
-                    {
-                        if (tab_minimax[i][j] == 'o')
-                        {
-
-                            o.setPosition(sprawdz_cordy.cordx10[i], sprawdz_cordy.cordy10[j]);
-
-                            oknoAplikacji.draw(o);
-                        }
-                        if (tab_minimax[i][j] == 'x')
-                        {
-
-                            x.setPosition(sprawdz_cordy.cordx10[i], sprawdz_cordy.cordy10[j]);
-
-                            oknoAplikacji.draw(x);
-                        }
-
-                    }
-                }
-                oknoAplikacji.display();
-            }
-
-
-
             if (reaction.type == sf::Event::Closed)
             {
                 
