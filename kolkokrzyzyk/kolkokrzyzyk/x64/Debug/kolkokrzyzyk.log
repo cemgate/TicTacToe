@@ -1,0 +1,35 @@
+﻿  Gra.cpp
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\kolkokrzyzyk\Gra.h(40,62): warning C4305: "inicjowanie": obcięcie z "double" do "_Ty"
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(248,42): warning C4244: "argument": konwersja z "double" do "const unsigned __int64", możliwa utrata danych
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(316,108): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(316,74): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(323,108): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(323,74): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
+          with
+          [
+              _Ty=int
+          ]
+  main.cpp
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\kolkokrzyzyk\Gra.h(40,62): warning C4305: "inicjowanie": obcięcie z "double" do "_Ty"
+          with
+          [
+              _Ty=float
+          ]
+  Generowanie kodu...
+  kolkokrzyzyk.vcxproj -> C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\x64\Debug\kolkokrzyzyk.exe
