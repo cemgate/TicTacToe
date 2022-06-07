@@ -42,14 +42,14 @@ public:
 	vector<float> scale = { 1, 0.8, 0.6,0.5, 0.4, 0.4,0.32,0.3 };
 	
 	int first_screen(sf::RenderWindow& oknoAplikacji);
-	int second_screen(sf::RenderWindow& oknoAplikacji);
+	bool second_screen(sf::RenderWindow& oknoAplikacji);
 	int third_screen(sf::RenderWindow& oknoAplikacji, int maps);
 	void play_game(sf::RenderWindow& oknoAplikacji, int maps, int who_start, int liczba_znakow);
 
 	bool moves_to_end(int maps, char** tabminimax);
 	int who_win(int liczba_znakow, int maps, char** tabminimax);
 	int minimax(char** tabminimax, int maps, int depth, int second_screen, int liczba_znakow);
-	Gra find_best_move(char** tabminimax, int maps);
+	Gra find_best_move(char** tabminimax, int maps, int liczba_znakow);
 
 
 };

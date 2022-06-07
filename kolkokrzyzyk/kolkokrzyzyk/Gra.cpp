@@ -141,7 +141,7 @@ int Gra::first_screen(sf::RenderWindow& oknoAplikacji)
     return maps;
 }
 
-int Gra::second_screen(sf::RenderWindow& oknoAplikacji)
+bool Gra::second_screen(sf::RenderWindow& oknoAplikacji)
 
 {
     int who_start = 0;
@@ -196,23 +196,22 @@ int Gra::second_screen(sf::RenderWindow& oknoAplikacji)
             if (reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && Mx > 679 && Mx < 679 + 642 && My >620 && My < 620+117)
             {
 
-                who_start = 3;
-                goto here;
+                return true;
+               
 
             }
             if (reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && Mx > 679 && Mx < 679 + 642 && My > 1220 && My <1220+117 )
             {
 
-                who_start = 4;
-                goto here;
+                return false;
+               
 
             }
          
         }
     }
 
-here:
-    return who_start;
+
 }
 
 int Gra::third_screen(sf::RenderWindow& oknoAplikacji, int maps)
@@ -355,7 +354,7 @@ here:
 
 void Gra::play_game(sf::RenderWindow& oknoAplikacji, int maps, int who_start, int liczba_znakow)
 {
-    Gra sprawdz_cordy;
+    Gra sprawdz_cordy, minimax;
     int essa = 1;
     int essa1 = 1;
     bool turn = true;
@@ -426,22 +425,26 @@ void Gra::play_game(sf::RenderWindow& oknoAplikacji, int maps, int who_start, in
 
                 if (turn == true && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left && tab_minimax[essa - 1][essa1 - 1] != 'x')
                 {
-                    tab_minimax[essa - 1][essa1 - 1] = 'o';
+                     tab_minimax[essa - 1][essa1 - 1] = 'o';
+                   // minimax = sprawdz_cordy.find_best_move(tab_minimax, maps, liczba_znakow);
+                   // tab_minimax[minimax.row][minimax.col] = 'o';
                     turn = false;
                     
                 }
                
-
-                if (turn == false && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left&& tab_minimax[essa-1][essa1-1]!='o')
+                
+                if (turn == false/* && reaction.type == sf::Event::MouseButtonPressed && reaction.mouseButton.button == sf::Mouse::Left&& tab_minimax[essa-1][essa1-1]!='o'*/)
                 {
-                    tab_minimax[essa - 1][essa1 - 1] = 'x';
+                    //tab_minimax[essa - 1][essa1 - 1] = 'x';
+                   minimax = sprawdz_cordy.find_best_move(tab_minimax, maps, liczba_znakow);
+                   tab_minimax[minimax.row][minimax.col] = 'x';
                     turn = true;
                    
                 }
                 int sprawdz;
 
                 sprawdz = sprawdz_cordy.who_win(liczba_znakow,maps, tab_minimax);
-                cout << sprawdz << endl;
+                //cout << sprawdz << endl;
 
                 oknoAplikacji.draw(board);
                 for (int i = 0; i < maps; i++)
@@ -557,17 +560,17 @@ int Gra::who_win(int liczba_znakow,int maps, char** tabminimax)
     }
 
 
-     // moze teraz sie uda diagonalnie
-     /*for (int row = 0; row <= maps-liczba_znakow; row++)
+     // diagonalnie od lewej do prawej
+     for (int row = 0; row <= maps-liczba_znakow; row++)
      {
          for (int col = 0; col <= maps - liczba_znakow; col++)
          {
-             for (int siema = 0; siema < maps - liczba_znakow; siema++)
+             for (int siema = 0; siema <liczba_znakow-1; siema++)
              {
                  if (tabminimax[row + siema][col + siema] == tabminimax[row + siema + 1][col + siema + 1] && tabminimax[row+siema][col+siema] != ' ')
                  {
                      counter++;
-                     cout << counter << endl;
+                     //cout << counter << endl;
                      if (counter == liczba_znakow)
                      {
                          sprawdzjakixrzad = row + siema;
@@ -590,11 +593,47 @@ int Gra::who_win(int liczba_znakow,int maps, char** tabminimax)
              else if (tabminimax[sprawdzjakixrzad][sprawdzjakiyrzad] == 'o' && counter == liczba_znakow)
                  return -10;
          }
-     }*/
+     }
      
+     //diagonalnie od prawej do lewej
+     for (int row = maps-1; row >= maps - (maps - liczba_znakow)-1; row--)
+     {
+         for (int col = 0; col <= maps - liczba_znakow; col++)
+         {
+             for (int siema = 0; siema < liczba_znakow - 1; siema++)
+             {
+                 if (tabminimax[row - siema][col + siema] == tabminimax[row - siema - 1][col + siema + 1] && tabminimax[row - siema][col + siema] != ' ')
+                 {
+                     counter++;
+                     //cout << counter << endl;
+                     if (counter == liczba_znakow)
+                     {
+                         sprawdzjakixrzad = row - siema;
+                         sprawdzjakiyrzad = col + siema;
+                         goto here2;
+                         break;
+                     }
+                 }
+                 else
+                 {
+                     counter = 1;
+                 }
+             }
+         }
+         {
+         here2:
+             if (tabminimax[sprawdzjakixrzad][sprawdzjakiyrzad] == 'x' && counter == liczba_znakow)
+                 return +10;
 
-    
-    //sprawdzanie diagonalnie od lewej do prawej
+             else if (tabminimax[sprawdzjakixrzad][sprawdzjakiyrzad] == 'o' && counter == liczba_znakow)
+                 return -10;
+         }
+     }
+
+
+
+    /* tutaj sie zaczyna komentarz
+    //sprawdzanie diagonalnie od lewej do prawej (dla chlopakow)
 for (int row = 0; row <= maps - liczba_znakow; row++)
 { 
     for (int col = 0; col <= maps - liczba_znakow; col++)
@@ -604,7 +643,7 @@ for (int row = 0; row <= maps - liczba_znakow; row++)
             counter++;
             row++;
             col++;
-            cout << counter << endl;
+            //cout << counter << endl;
             if (counter == liczba_znakow)
             {
                 break;
@@ -643,7 +682,7 @@ for (int row = maps - 1; row >= liczba_znakow - 1; row--)
             counter++;
             row--;
             col++;
-            cout << counter << endl;
+            //cout << counter << endl;
             if (counter == liczba_znakow)
             {
                 break;
@@ -671,9 +710,14 @@ for (int row = maps - 1; row >= liczba_znakow - 1; row--)
     }
 
 }
+
+
+
+*/
+
     return 0;
 }
-/*
+
 int Gra::minimax(char** tabminimax, int maps, int depth, int second_screen, int liczba_znakow) 
 {
     int score = who_win(liczba_znakow, maps, tabminimax);
@@ -694,28 +738,27 @@ int Gra::minimax(char** tabminimax, int maps, int depth, int second_screen, int 
         return 0;
 
     // If this maximizer's move
-    if (isMax)
+    if (second_screen)
     {
         int best = -1000;
 
         // Traverse all cells
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < maps; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < maps; j++)
             {
                 // Check if cell is empty
-                if (board[i][j] == '_')
+                if (tabminimax[i][j] == ' ')
                 {
                     // Make the move
-                    board[i][j] = player;
+                    tabminimax[i][j] = 'x';
 
                     // Call minimax recursively and choose
                     // the maximum value
-                    best = max(best,
-                        minimax(board, depth + 1, !isMax));
+                    best = max(best, minimax(tabminimax, maps,depth + 1, !second_screen, liczba_znakow));
 
                     // Undo the move
-                    board[i][j] = '_';
+                    tabminimax[i][j] = ' ';
                 }
             }
         }
@@ -728,23 +771,23 @@ int Gra::minimax(char** tabminimax, int maps, int depth, int second_screen, int 
         int best = 1000;
 
         // Traverse all cells
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < maps; i++)
         {
-            for (int j = 0; j < 3; j++)
+            for (int j = 0; j < maps; j++)
             {
                 // Check if cell is empty
-                if (board[i][j] == '_')
+                if (tabminimax[i][j] == ' ')
                 {
                     // Make the move
-                    board[i][j] = opponent;
+                    tabminimax[i][j] = 'o';
 
                     // Call minimax recursively and choose
                     // the minimum value
                     best = min(best,
-                        minimax(board, depth + 1, !isMax));
+                        minimax(tabminimax, maps,depth + 1, !second_screen, liczba_znakow));
 
                     // Undo the move
-                    board[i][j] = '_';
+                    tabminimax[i][j] = ' ';
                 }
             }
         }
@@ -752,7 +795,8 @@ int Gra::minimax(char** tabminimax, int maps, int depth, int second_screen, int 
     }
 }
 
-Gra Gra::find_best_move(char** tabminimax, int maps)
+
+Gra Gra::find_best_move(char** tabminimax, int maps, int liczba_znakow)
 {
     int bestVal = -1000;
     Gra bestMove;
@@ -774,7 +818,7 @@ Gra Gra::find_best_move(char** tabminimax, int maps)
 
                 // compute evaluation function for this
                 // move.
-                int moveVal = minimax(tabminimax, maps , 0, false);
+                int moveVal = minimax(tabminimax, maps , 0, false, liczba_znakow);
 
                 // Undo the move
                 tabminimax[i][j] = ' ';
@@ -791,6 +835,6 @@ Gra Gra::find_best_move(char** tabminimax, int maps)
             }
         }
     }  
+    cout << bestMove.row << "   "  << bestMove.col <<  endl;
     return bestMove;
 }
-*/
