@@ -10,10 +10,10 @@ int main()
        
        siema1= test.first_screen(oknoAplikacji);
        
-       siema2 = test.second_screen(oknoAplikacji);
+      // siema2 = test.second_screen(oknoAplikacji);
        
        siema3 = test.third_screen(oknoAplikacji, siema1);
 
-       test.play_game(oknoAplikacji, siema1, siema2, siema3);
+       test.play_game(oknoAplikacji, siema1, true, siema3);
        
 } 
