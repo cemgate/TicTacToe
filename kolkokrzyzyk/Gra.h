@@ -12,7 +12,7 @@
 #define AI_MARKER 'o'
 #define PLAYER_MARKER 'x'
 #define EMPTY_SPACE ' '
-#define MAX_DEPTH 4
+#define MAX_DEPTH 5
 #define START_DEPTH 0
 
 using namespace std;
@@ -23,6 +23,25 @@ public:
 	int row;
 	int col;
 
+	int first_screen(sf::RenderWindow& oknoAplikacji);
+	bool second_screen(sf::RenderWindow& oknoAplikacji);
+	int third_screen(sf::RenderWindow& oknoAplikacji, int maps);
+	void play_game(sf::RenderWindow& oknoAplikacji, int maps, bool who_start, int liczba_znakow);
+	bool board_full(int maps, char** tabminimax);
+
+	int win_row(int liczba_znakow, int maps, char** tabminimax);
+	int win_col(int liczba_znakow, int maps, char** tabminimax);
+	int win_diagonalLeft(int liczba_znakow, int maps, char** tabminimax);
+	int win_diagonalRight(int liczba_znakow, int maps, char** tabminimax);
+	bool game_is_won(int liczba_znakow, int maps, char** tabminimax, char WHOS_TURN);
+
+	vector<pair<int, int>> get_legal_moves(char** tabminimax, int maps);
+	char get_opponent_marker(char marker);
+	int get_board_state(char** tabminimax, int maps, char marker, int liczba_znakow);
+	pair<int, pair<int, int>> minimax_optimization(char** tabminimax, int maps, char marker, int depth, int alpha, int beta, int liczba_znakow);
+
+
+private:
 	vector<int> cordx3 = { 375,375 + 450,375 + 900, 375 + 900 + 450 };
 	vector<int> cordy3 = { 420,420 + 450,420 + 900 , 420 + 900 + 450 };
 
@@ -51,21 +70,4 @@ public:
 	vector<vector<int>> cordy = { cordy3, cordy4, cordy5, cordy6, cordy7, cordy8, cordy9, cordy10 };
 
 	vector<float> scale = { 1, 0.8, 0.6,0.5, 0.4, 0.4,0.32,0.3 };
-
-	int first_screen(sf::RenderWindow& oknoAplikacji);
-	bool second_screen(sf::RenderWindow& oknoAplikacji);
-	int third_screen(sf::RenderWindow& oknoAplikacji, int maps);
-	void play_game(sf::RenderWindow& oknoAplikacji, int maps, bool who_start, int liczba_znakow);
-	bool board_full(int maps, char** tabminimax);
-	int who_win(int liczba_znakow, int maps, char** tabminimax);
-
-
-
-	vector<pair<int, int>> get_legal_moves(char** tabminimax, int maps);
-	bool position_occupied(char** tabminimax, int maps, pair<int, int> pos);
-	vector<pair<int, int>> get_occupied_positions(char** tabminimax, int maps, char marker);
-	char get_opponent_marker(char marker);
-	int get_board_state(char** tabminimax, int maps, char marker, int liczba_znakow);
-	bool game_is_won(int liczba_znakow, int maps, char** tabminimax);
-	pair<int, pair<int, int>> minimax_optimization(char** tabminimax, int maps, char marker, int depth, int alpha, int beta, int liczba_znakow);
 };

@@ -1,29 +1,29 @@
 ﻿  Gra.cpp
-C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.h(53,62): warning C4305: "inicjowanie": obcięcie z "double" do "_Ty"
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.h(72,62): warning C4305: "inicjowanie": obcięcie z "double" do "_Ty"
           with
           [
               _Ty=float
           ]
-C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(386,42): warning C4244: "argument": konwersja z "double" do "const unsigned __int64", możliwa utrata danych
-C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(457,108): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(407,42): warning C4244: "argument": konwersja z "double" do "const unsigned __int64", możliwa utrata danych
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(547,108): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
           with
           [
               _Ty=int
           ]
-C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(457,74): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(547,74): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
           with
           [
               _Ty=int
           ]
-C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(464,108): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(554,108): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
           with
           [
               _Ty=int
           ]
-C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(464,74): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(554,74): warning C4244: "argument": konwersja z "_Ty" do "float", możliwa utrata danych
           with
           [
               _Ty=int
           ]
-C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(215): warning C4715: "Gra::second_screen”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\kolkokrzyzyk\Gra.cpp(224): warning C4715: "Gra::second_screen”: niewszystkie ścieżki kodu zwracają wartość
   kolkokrzyzyk.vcxproj -> C:\Users\marci\OneDrive\Pulpit\STUDIA\4 Semestr\PAMSI\Projekt 3\kolkokrzyzyk\TicTacToe-main\kolkokrzyzyk\x64\Debug\kolkokrzyzyk.exe
