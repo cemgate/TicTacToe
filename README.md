@@ -11,9 +11,6 @@ The game allows the user to choose the size of the board from 3x3 to 10x10, and 
 ## Implementation
 I used the minimax algorithm to develop the game logic. The game uses the SFML library for the graphical user interface, and I used object-oriented programming concepts to develop the game.
 
-## How to Use?
-To use the program, simply download the code and compile it using your preferred C++ compiler. Then run the executable file and start playing the game.
-
 ## Requirements
 To run the program, you will need the SFML library installed on your system. You can download the library from the official website and install it on your computer. To use the SFML library, you need to specify the path to the library in Visual Studio.  
 
